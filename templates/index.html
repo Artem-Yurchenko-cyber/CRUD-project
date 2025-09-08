@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section>
+    <h2>Список книг</h2>
+    <div class="cards">
+        {% for book in books %}
+        <div class="card">
+            <h3>{{ book.title }}</h3>
+            <p><strong>Автор:</strong> {{ book.author }}</p>
+            <p><strong>Сторінок:</strong> {{ book.pages }}</p>
+            <p><strong>Статус:</strong> {{ book.status }}</p>
+
+            <div class="buttons">
+                <form action="{{ url_for('delete_book', book_id=book.id) }}" method="POST">
+                    <button type="submit" onclick="return confirmDelete()">❌ Видалити</button>
+                </form>
+                <a href="{{ url_for('edit_book', book_id=book.id) }}">✏️ Редагувати</a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+
+<hr>
+
+<section>
+    <h2>➕ Додати книгу</h2>
+    <form action="{{ url_for('add_book') }}" method="POST" class="add-form">
+        <input type="text" name="title" placeholder="Назва" required>
+        <input type="text" name="author" placeholder="Автор" required>
+        <input type="number" name="pages" placeholder="Сторінок" required>
+        <select name="status">
+            <option value="Прочитано">Прочитано</option>
+            <option value="Не прочитано">Не прочитано</option>
+        </select>
+        <button type="submit">Додати</button>
+    </form>
+</section>
+{% endblock %}

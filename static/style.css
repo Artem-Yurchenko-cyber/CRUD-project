@@ -1,0 +1,67 @@
+body {
+    font-family: Arial, sans-serif;
+    background: #a19e9e;
+    margin: 0;
+    padding: 0px;
+    text-align: center;
+}
+
+header h1 {
+    margin-bottom: 30px;
+}
+
+.cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.card {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0,0,0,0.1);
+    padding: 15px;
+    width: 200px;  /* 📌 робимо в 2-3 рази менші */
+    font-size: 10px;  /* 📌 зменшений шрифт */
+    text-align: left;
+}
+
+.card h3 {
+    margin-top: 0;
+    font-size: 16px;
+    color: #2c3e50;
+}
+
+.buttons {
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+button, a {
+    display: inline-block;
+    padding: 6px 10px;
+    border-radius: 6px;
+    border: none;
+    text-decoration: none;
+    font-size: 10px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+button {
+    background-color: #e74c3c;
+    color: white;
+}
+
+a {
+    background-color: #3498db;
+    color: white;
+    padding: 10px 10px;
+}
+
+form {
+    margin: 0px 0;
+}

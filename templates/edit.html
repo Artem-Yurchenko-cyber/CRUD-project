@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section>
+    <h2>✏️ Редагувати книгу</h2>
+    <form action="{{ url_for('edit_book', book_id=book.id) }}" method="POST" class="edit-form">
+        <input type="text" name="title" value="{{ book.title }}" required>
+        <input type="text" name="author" value="{{ book.author }}" required>
+        <input type="number" name="pages" value="{{ book.pages }}" required>
+        <select name="status">
+            <option value="Прочитано" {% if book.status == "Прочитано" %} selected{% endif %}>Прочитано</option>
+            <option value="Не прочитано" {% if book.status == "Не прочитано" %} selected{% endif %}>Не прочитано</option>
+        </select>
+        <button type="submit">Зберегти</button>
+    </form>
+</section>
+{% endblock %}
