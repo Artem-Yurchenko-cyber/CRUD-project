@@ -2,16 +2,15 @@
 <html lang="uk">
 <head>
     <meta charset="UTF-8">
-    <title>Flask Library CRUD</title>
+    <title>Моя бібліотека</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-    <script src="{{ url_for('static', filename='script.js') }}" defer></script>
 </head>
 <body>
     <header>
-        <h1>Моя бібліотека</h1>
+        <h1>📚 Моя бібліотека</h1>
     </header>
 
-    <main class="container">
+    <main>
         {% block content %}{% endblock %}
     </main>
 </body>
