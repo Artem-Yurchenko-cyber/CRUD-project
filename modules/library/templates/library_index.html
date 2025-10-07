@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block extra_styles %}
+<link rel="stylesheet" href="{{ url_for('library.static', filename='library.css') }}">
+{% endblock %}
+
+{% block content %}
+<h2>📚 Моя бібліотека</h2>
+
+<div class="container">
+    {% for book in books %}
+    <div class="book">
+        <h3>{{ book.title }}</h3>
+        <p><b>Автор:</b> {{ book.author }}</p>
+        <p><b>Сторінок:</b> {{ book.pages }}</p>
+        <p><b>Статус:</b> {{ book.status }}</p>
+        <div class="buttons">
+            <a href="{{ url_for('library.edit_book', id=book.id) }}">✏️ Редагувати</a>
+            <a href="{{ url_for('library.delete_book', id=book.id) }}" onclick="return confirm('Видалити книгу?');">🗑 Видалити</a>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+<hr>
+
+<h3>➕ Додати книгу</h3>
+<form action="{{ url_for('library.add_book') }}" method="POST">
+    <input type="text" name="title" placeholder="Назва" required>
+    <input type="text" name="author" placeholder="Автор" required>
+    <input type="number" name="pages" placeholder="Сторінок" required>
+    <select name="status">
+        <option value="Прочитано">Прочитано</option>
+        <option value="Не прочитано">Не прочитано</option>
+    </select>
+    <button type="submit">Додати</button>
+</form>
+{% endblock %}
