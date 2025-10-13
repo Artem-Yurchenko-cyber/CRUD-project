@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block extra_styles %}
+<link rel="stylesheet" href="{{ url_for('cinema.static', filename='cinema.css') }}">
+{% endblock %}
+
+{% block content %}
+<h2>📚 Мій кінотеатр</h2>
+
+<div class="container">
+    {% for movie in movies %}
+    <div class="movie">
+        <h3>{{ movie.title }}</h3>
+        <p><b>Країна:</b> {{ movie.country }}</p>
+        <p><b>Рік:</b> {{ movie.year }}</p>
+        <p><b>Тривалість:</b> {{ movie.duration }} </p>
+        <p><b>Статус:</b> {{ movie.status }}</p>
+        <div class="buttons">
+            <a href="{{ url_for('cinema.edit_movie', id=movie.id) }}">✏️ Редагувати</a>
+            <a href="{{ url_for('cinema.delete_movie', id=movie.id) }}" onclick="return confirm('Видалити фільм?');">🗑 Видалити</a>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+<hr>
+
+<h3>➕ Додати фільм</h3>
+<form action="{{ url_for('library.add_book') }}" method="POST">
+    <input type="text" name="title" placeholder="Назва" required>
+    <input type="text" name="author" placeholder="Автор" required>
+    <input type="number" name="pages" placeholder="Сторінок" required>
+    <select name="status">
+        <option value="Прочитано">Переглянуто</option>
+        <option value="Не прочитано">Не переглянуто</option>
+    </select>
+    <button type="submit">Додати</button>
+</form>
+{% endblock %}

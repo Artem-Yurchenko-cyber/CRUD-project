@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block extra_styles %}
+<link rel="stylesheet" href="{{ url_for('сinema.static', filename='cinema.css') }}">
+{% endblock %}
+
+{% block content %}
+<h2>✏️ Редагування фільму</h2>
+<form action="{{ url_for('cinema.edit_book', id=movie.id) }}" method="POST" class="edit-form">
+    <input type="text" name="title" value="{{ movie.title }}" required>
+    <input type="text" name="country" value="{{ movie.country }}" required>
+    <input type="text" name="year" value="{{ movie.year }}" required>
+    <input type="number" name="duration" value="{{ movie.duration }}" required>
+    <select name="status">
+        <option value="Переглянуто" {% if book.status == 'Переглянуто' %}selected{% endif %}>Переглянуто</option>
+        <option value="Не переглянуто" {% if book.status == 'Не переглянуто' %}selected{% endif %}>Не переглянуто</option>
+    </select>
+    <button type="submit">💾 Зберегти</button>
+</form>
+{% endblock %}
