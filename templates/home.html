@@ -4,10 +4,13 @@
 {% endblock %}
 
 {% block content %}
-<h2>Мої модулі</h2>
 <div class="modules-container">
     {% for module in modules %}
-        <a href="/{{ module.route }}" class="module-card">{{ module.icon }} {{ module.name }}</a>
+        <a href="/{{ module.route }}" class="module-card">
+            {{ module.icon }} {{ module.name }}
+        </a>
     {% endfor %}
+
+    <a href="#" class="module-card add-module">＋ Додати модуль</a>
 </div>
 {% endblock %}

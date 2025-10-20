@@ -1,24 +1,80 @@
-body{
-    background-color: rgb(153, 210, 191);
+body {
+    background-color: #b7e2d2;
+    font-family: "Segoe UI", Arial, sans-serif;
+    margin: 0;
+    padding: 0;
     text-align: center;
-    margin: 25px;
 }
 
-nav{
-    text-align: center;
+header {
+    padding: 20px;
+    background-color: #99c7ba;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    color: #053b32;
+    margin-bottom: 10px;
+}
+
+nav {
+    margin-top: 10px;
+}
+
+nav a {
+    margin: 0 12px;
+    color: #2c1f47;
+    text-decoration: none;
+    font-weight: bold;
+    border: 1px solid transparent;
+    padding: 5px 10px;
+    border-radius: 6px;
+    transition: 0.3s;
+}
+
+nav a:hover {
+    border-color: #2c1f47;
+    background-color: #e3faf2;
+}
+
+.modules-container {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 15px;
-    margin-top: 20px;
-    border: white;
+    gap: 25px;
+    margin: 40px 20px;
 }
 
-.modules-container{
-    text-align: center;
+.module-card {
+    background-color: #ffffff;
+    width: 180px;
+    height: 120px;
+    border-radius: 15px;
     display: flex;
-    flex-wrap: wrap;
+    align-items: center;
     justify-content: center;
-    gap: 15px;
-    margin-top: 20px;
+    font-weight: bold;
+    font-size: 18px;
+    color: #0f3d36;
+    text-decoration: none;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transition: transform 0.25s, box-shadow 0.25s;
+}
+
+.module-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.25);
+    background-color: #def5ed;
+}
+
+.add-module {
+    background-color: #e8f4ff;
+    border: 2px dashed #6c9;
+    color: #004c40;
+    cursor: pointer;
+}
+
+.add-module:hover {
+    background-color: #d5f3df;
+    transform: scale(1.05);
 }
