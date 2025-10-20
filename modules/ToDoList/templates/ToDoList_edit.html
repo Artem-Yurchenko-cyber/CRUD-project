@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block extra_styles %}
+<link rel="stylesheet" href="{{ url_for('ToDoList.static', filename='ToDoList.css') }}">
+{% endblock %}
+
+{% block content %}
+<h2>✏️ Редагування завдання</h2>
+<form action="{{ url_for('ToDoList.edit_task', id=task.id) }}" method="POST" class="edit-form">
+    <input type="text" name="title" value="{{ task.title }}" required>
+    <input type="text" name="description" value="{{ task.description }}" required>
+    <input type="date" name="deadline" value="{{ task.deadline }}" required>
+    <select name="status">
+        <option value="Виконано" {% if task.status == 'Виконано' %}selected{% endif %}>Виконано</option>
+        <option value="Не виконано" {% if task.status == 'Не виконано' %}selected{% endif %}>Не виконано</option>
+        <option value="У процесі виконання" {% if task.status == 'У процесі виконання' %}selected{% endif %}>У процесі виконання</option>
+    </select>
+    <button type="submit">💾 Зберегти</button>
+</form>
+{% endblock %}

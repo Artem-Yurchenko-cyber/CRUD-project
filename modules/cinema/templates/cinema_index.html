@@ -25,13 +25,14 @@
 <hr>
 
 <h3>➕ Додати фільм</h3>
-<form action="{{ url_for('library.add_book') }}" method="POST">
+<form action="{{ url_for('cinema.add_movie') }}" method="POST">
     <input type="text" name="title" placeholder="Назва" required>
-    <input type="text" name="author" placeholder="Автор" required>
-    <input type="number" name="pages" placeholder="Сторінок" required>
+    <input type="text" name="country" placeholder="Країна" required>
+    <input type="number" name="year" placeholder="Рік" required>
+    <input type="number" name="duration" placeholder="Тривалість" required>
     <select name="status">
-        <option value="Прочитано">Переглянуто</option>
-        <option value="Не прочитано">Не переглянуто</option>
+        <option value="Переглянуто">Переглянуто</option>
+        <option value="Не переглянуто">Не переглянуто</option>
     </select>
     <button type="submit">Додати</button>
 </form>

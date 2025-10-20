@@ -11,31 +11,33 @@ def index():
 # Додавання фільмів
 @cinema_bp.route("/add", methods=["POST"])
 def add_movie():
-    new_id = max([b["id"] for b in books]) + 1 if books else 1
+    new_id = max([m["id"] for m in movies]) + 1 if movies else 1
     movies.append({
         "id": new_id,
         "title": request.form["title"],
-        "author": request.form["author"],
-        "pages": request.form["pages"],
+        "country": request.form["country"],
+        "year": request.form["year"],
+        "duration": request.form["duration"],
         "status": request.form["status"]
     })
-    return redirect(url_for("library.index"))
+    return redirect(url_for("cinema.index"))
 
 # Видалення фільмів
 @cinema_bp.route("/delete/<int:id>")
 def delete_movie(id):
-    global books
-    books[:] = [b for b in books if b["id"] != id]
-    return redirect(url_for("library.index"))
+    global movies
+    movies[:] = [m for m in movies if m["id"] != id]
+    return redirect(url_for("cinema.index"))
 
 # Редагування фільмів
 @cinema_bp.route("/edit/<int:id>", methods=["GET", "POST"])
 def edit_movie(id):
-    book = next((b for b in books if b["id"] == id), None)
-    if request.method == "POST" and book:
-        book["title"] = request.form["title"]
-        book["author"] = request.form["author"]
-        book["pages"] = request.form["pages"]
-        book["status"] = request.form["status"]
-        return redirect(url_for("library.index"))
-    return render_template("library_edit.html", book=book)
+    movie = next((m for m in movies if m["id"] == id), None)
+    if request.method == "POST" and movie:
+        movie["title"] = request.form["title"]
+        movie["country"] = request.form["country"]
+        movie["year"] = request.form["year"]
+        movie["duration"] = request.form["duration"]
+        movie["status"] = request.form["status"]
+        return redirect(url_for("cinema.index"))
+    return render_template("cinema_edit.html", movie=movie)

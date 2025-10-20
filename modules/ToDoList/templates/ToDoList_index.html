@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block extra_styles %}
+<link rel="stylesheet" href="{{ url_for('ToDoList.static', filename='ToDoList.css') }}">
+{% endblock %}
+
+{% block content %}
+<h2>📚 Мій список справ</h2>
+
+<div class="container">
+    {% for task in tasks %}
+    <div class="task">
+        <h3>{{ task.title }}</h3>
+        <p><b>Опис:</b> {{ task.description }}</p>
+        <p><b>Термін:</b> {{ task.deadline }}</p>
+        <p><b>Статус:</b> {{ task.status }}</p>
+        <div class="buttons">
+            <a href="{{ url_for('ToDoList.edit_task', id=task.id) }}">✏️ Редагувати</a>
+            <a href="{{ url_for('ToDoList.delete_task', id=task.id) }}" onclick="return confirm('Видалити завдання?');">🗑 Видалити</a>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+<hr>
+
+<h3>➕ Додати завдання</h3>
+<form action="{{ url_for('ToDoList.add_task') }}" method="POST">
+    <input type="text" name="title" placeholder="Назва" required>
+    <input type="text" name="description" placeholder="Опис" required>
+    <input type="date" name="deadline" placeholder="Термін" required>
+    <select name="status">
+        <option value="Прочитано">Виконано</option>
+        <option value="Прочитано">У процесі виконання</option>
+        <option value="Не прочитано">Не виконано</option>
+    </select>
+    <button type="submit">Додати</button>
+</form>
+{% endblock %}
