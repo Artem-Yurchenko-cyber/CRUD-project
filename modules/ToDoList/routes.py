@@ -14,6 +14,7 @@ def add_task():
     new_id = max([t["id"] for t in tasks]) + 1 if tasks else 1
     tasks.append({
         "id": new_id,
+        "title": request.form["title"],
         "description": request.form["description"],
         "deadline": request.form["deadline"],
         "status": request.form["status"]

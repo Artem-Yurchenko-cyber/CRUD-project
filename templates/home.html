@@ -4,13 +4,10 @@
 {% endblock %}
 
 {% block content %}
-<div class="modules-container">
-    {% for module in modules %}
-        <a href="/{{ module.route }}" class="module-card">
-            {{ module.icon }} {{ module.name }}
-        </a>
-    {% endfor %}
+<h1>👋 Вітаємо у CRUD-панелі!</h1>
+<p>Оберіть модуль у меню зліва або створіть новий.</p>
 
-    <a href="#" class="module-card add-module">＋ Додати модуль</a>
+<div class="dashboard-actions">
+    <a href="#" class="add-module-btn">＋ Додати новий модуль</a>
 </div>
 {% endblock %}
